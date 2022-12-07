@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="
+            http://www.osgi.org/xmlns/blueprint/v1.0.0 http://www.osgi.org/xmlns/blueprint/v1.0.0/blueprint.xsd
+            http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0 http://aries.apache.org/schemas/blueprint-cm/blueprint-cm-1.1.0.xsd">
+
+    <cm:property-placeholder placeholder-prefix="${" id="properties" persistent-id="nsi.updates.src.asutr23">
+        <cm:default-properties>
+            <cm:property name="asutr23.soap.logger.enabled" value="false"/>
+            <cm:property name="app.struct.transform.thread.pool.size" value="50"/>
+            <cm:property name="app.struct.transform.thread.pool.maxsize" value="50"/>
+            <cm:property name="application.src.queue.name" value="rzd.asoup3.nsi.reference-update.sources.asutr23"/>
+            <cm:property name="application.src.queue.concurrent.consumers" value="1"/>
+            <cm:property name="application.dst.request.datefrom.minusdays" value="1"/>
+            <cm:property name="application.dst.request.dateto.minusdays" value="1"/>
+            <cm:property name="master.lock" ref="empty"/>
+            <cm:property name="asutr23.endpoint.address" value="http://localhost"/>
+            <cm:property name="asutr23.username" value="dummy"/>
+            <cm:property name="asutr23.password" value="dummy"/>
+        </cm:default-properties>
+    </cm:property-placeholder>
+    <cm:property-placeholder placeholder-prefix="${default:" id="default" persistent-id="rzd.asoup3.default"/>
+
+    <bean id="empty" class="java.lang.String"/>
+
+</blueprint>

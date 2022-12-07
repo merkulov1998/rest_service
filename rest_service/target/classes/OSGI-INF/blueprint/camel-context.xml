@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:camel="http://camel.apache.org/schema/spring"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://camel.apache.org/schema/spring
+		http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+    <bean id="str" class="Structure"/>
+    <camelContext id="appReaderDetails" xmlns="http://camel.apache.org/schema/spring">
+        <restConfiguration port="8161" host="localhost" component="netty-http" bindingMode="auto"/>
+        <rest path="/structure" id="str">
+            <post>
+                <to uri="direct:structure"/>
+            </post>
+        </rest>
+        <route>
+            <from uri="direct:structure"/>
+            <log message="${body}"/>
+        </route>
+    </camelContext>
+</beans>
